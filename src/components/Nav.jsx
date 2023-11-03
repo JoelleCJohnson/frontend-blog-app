@@ -30,11 +30,6 @@ export default function Nav() {
                         Home
                     </a>
                 </li>
-                <li>
-                    <a href="/post">
-                        Add Post
-                    </a>
-                </li>
                 {!loggedIn &&
                     <li>
                         <a href="/"><button onClick={goToLogin}>
@@ -42,12 +37,17 @@ export default function Nav() {
                         </button></a>
                     </li>
                 }
-                {loggedIn && 
-                <>
-                    <li>
-                        <button onClick={handleLogOut}>LogOut</button>
-                    </li>
-                </>}
+                {loggedIn &&
+                    <>
+                        <li>
+                            <a href="/post">
+                                Add Post
+                            </a>
+                        </li>
+                        <li>
+                            <button onClick={handleLogOut}>LogOut</button>
+                        </li>
+                    </>}
             </ul>
         </header>
     )
