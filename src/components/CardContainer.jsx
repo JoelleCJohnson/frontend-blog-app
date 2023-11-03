@@ -21,7 +21,7 @@ export default function CardContainer() {
         formData.content = e.target.content.value
         console.log(formData.title, formData.content)
 
-        fetch('https://localhost8080', {
+        fetch('http://localhost:8080', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
