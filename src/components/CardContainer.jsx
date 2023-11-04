@@ -1,6 +1,6 @@
-import { useState, useEffect } from "react"
+import { useEffect } from "react"
 
-export default function CardContainer({data}) {
+export default function CardContainer({data, setData}) {
     
 
     // 1. As soon as component loads, fetch data
@@ -9,7 +9,7 @@ export default function CardContainer({data}) {
         fetch('http://localhost:8080')
             .then(res => res.json())
             // 2. Put data array in state variable
-            .then((cleanData) => setData(cleanData))
+            .then((data) => setData(data))
             .catch(err => console.error(err))
     }, [])
 
@@ -19,6 +19,7 @@ export default function CardContainer({data}) {
         <>
             <div className="cardContainer">
                 {// 3. Map data array in state variable
+                data &&
                     data.map((singlePost, index) => {
                         // 4. Return jsx from the map
                         return (

@@ -1,6 +1,7 @@
+import { useNavigate } from "react-router-dom"
+
 export default function AddPost({setData}) {
-
-
+    const nav = useNavigate()
     const handleFormSubmit = e => {
         e.preventDefault()
         const formData = {}
@@ -18,6 +19,7 @@ export default function AddPost({setData}) {
             .then(res => res.json())
             .then(data => setData(data))
             .catch(err => console.error(err))
+        nav("/home")
     }
 
     return (
