@@ -1,7 +1,6 @@
 import { useContext, useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { UserContext } from "../App"
-import "./Nav.css"
 
 export default function Nav() {
 
@@ -45,7 +44,7 @@ export default function Nav() {
                             </a>
                         </li>
                         <li>
-                            <button onClick={handleLogOut}>LogOut</button>
+                            <button onClick={handleLogOut}>Log Out</button>
                         </li>
                     </>
                 }

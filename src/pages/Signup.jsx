@@ -39,7 +39,7 @@ const {setLogin, login} = useContext(UserContext)
     }
     return (
         <>
-        <h2>Please Sign Up:</h2>
+        <h2 >Please Sign Up:</h2>
         <form action="" onSubmit={handleFormSubmit}>
             <label htmlFor="email">
                 Email:

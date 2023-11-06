@@ -6,6 +6,7 @@
 
 body {
   box-sizing: border-box;
+  background-color:  rgb(250, 233, 245);
 }
 
 header {
@@ -36,6 +37,10 @@ header > ul > li > a {
   text-decoration: none;
 }
 
+header > .button {
+  background-color: #333;
+}
+
 .cardContainer {
   display: flex;
   max-width: 1200px;
@@ -49,6 +54,7 @@ header > ul > li > a {
   max-height: 300px;
   border: 1px solid rgb(70, 70, 70);
   border-radius: 5px;
+  background-color: rgb(247, 232, 254);
 }
 
 .singleCard > img {
@@ -63,3 +69,4 @@ footer {
   height: 200px;
   object-fit: cover;
 }
+
