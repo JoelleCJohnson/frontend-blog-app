@@ -7,10 +7,10 @@ const {setLogin, login} = useContext(UserContext)
  const navigate = useNavigate()
 
     useEffect(()=> {
-        if (login === true){
-         navigate('/home')
-        }
-     }, [login])
+        const userLS = localStorage.getItem('userLogin')
+        if(!userLS){
+            setLogin(false)
+        }}, [])
 
     const handleFormSubmit = (e) => {
         e.preventDefault()

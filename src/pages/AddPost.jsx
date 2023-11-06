@@ -11,7 +11,7 @@ export default function AddPost() {
         e.preventDefault()
         const formData = {}
         formData.title = e.target.title.value
-        formData.content = e.target.content.value   
+        formData.content = e.target.content.value
 
 
         fetch('http://localhost:8080/post', {
@@ -34,11 +34,12 @@ export default function AddPost() {
                 Title:
                 <input type="text" name="title" />
             </label>
+            <br />
             <label htmlFor="content">
                 Content:
                 <input type="text" name="content" />
             </label>
-
+            <br />
             <button type="submit">Add Blog Post</button>
 
         </form>

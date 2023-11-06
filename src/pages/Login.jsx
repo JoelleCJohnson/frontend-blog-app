@@ -34,6 +34,8 @@ export default function Login() {
                     setLogin(false)
                 } else {
                     setLogin(true)
+                    //localstorage
+                    localStorage.setItem('userLogin', JSON.stringify(formData))
                 }
             })
             .catch(console.error)

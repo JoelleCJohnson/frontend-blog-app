@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { createContext, useState } from 'react';
+import { createContext, useEffect, useState } from 'react';
 import Login from './pages/Login';
 import Nav from './components/Nav';
 import Footer from './components/Footer';
@@ -13,6 +13,14 @@ export const UserContext = createContext()
 export default function App() {
   const [blogPosts, setBlogPosts] = useState([])
   const [login, setLogin] = useState(false)
+
+  useEffect(() => {
+    const userLS = localStorage.getItem('userLogin')
+    if(userLS){
+      setLogin(true)
+    }
+  },
+  [])
 
   return (
     <>
