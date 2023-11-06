@@ -1,7 +1,16 @@
+import { useContext, useEffect } from "react"
 import { useNavigate } from "react-router-dom"
+import { UserContext } from "../App"
 
 export default function Login() {
     const navigate = useNavigate()
+    const { login, setLogin, data, setData } = useContext(UserContext)
+
+    useEffect(()=> {
+       if (login === true){
+        navigate('/home')
+       }
+    }, [login])
 
     const handleFormSubmit = (e) => {
         e.preventDefault()
@@ -11,8 +20,25 @@ export default function Login() {
             password: e.target.password.value
         }
 
-        localStorage.setItem('myUser', JSON.stringify(formData))
-        navigate('/home')
+        fetch('http://localhost:8080/', {
+            method : 'POST',
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(formData)
+        })
+            .then(res => res.json())
+            .then(user => {
+                console.log('user -->', user.message)
+                if(user.message === 'Unsuccessful'){
+                    setLogin(false)
+                } else {
+                    setLogin(true)
+                }
+            })
+            .catch(console.error)
+        
+        // navigate('/home')
     }
 
     return (

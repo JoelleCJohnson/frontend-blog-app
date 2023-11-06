@@ -1,15 +1,17 @@
-import { useEffect } from "react"
+import { useContext, useEffect } from "react"
+import { UserContext } from "../App"
 
-export default function CardContainer({data, setData}) {
-    
+export default function CardContainer() {
+    const { blogPosts, setBlogPosts } = useContext(UserContext)
+    const {login } = useContext(UserContext)
 
     // 1. As soon as component loads, fetch data
 
     useEffect(() => {
-        fetch('http://localhost:8080')
+        fetch('http://localhost:8080/home')
             .then(res => res.json())
             // 2. Put data array in state variable
-            .then((data) => setData(data))
+            .then((data) => setBlogPosts(data))
             .catch(err => console.error(err))
     }, [])
 
@@ -18,18 +20,16 @@ export default function CardContainer({data, setData}) {
     return (
         <>
             <div className="cardContainer">
-                {// 3. Map data array in state variable
-                data &&
-                    data.map((singlePost, index) => {
-                        // 4. Return jsx from the map
-                        return (
-                            <div className="singleCard" key={singlePost._id}>
-                                <img src={`https://source.unsplash.com/random/${index}`} alt="" srcSet="" />
-                                <h2>Title: {singlePost.title}</h2>
-                                <p>{singlePost.content}</p>
-                            </div>
-                        )
-                    })
+                {blogPosts.map((singlePost, index) => {
+                    // 4. Return jsx from the map
+                    return (
+                        <div className="singleCard" key={singlePost._id}>
+                            <img src={`https://source.unsplash.com/random/${index}`} alt="" srcSet="" />
+                            <h2>Title: {singlePost.title}</h2>
+                            <p>{singlePost.content}</p>
+                        </div>
+                    )
+                })
                 }
             </div>
         </>

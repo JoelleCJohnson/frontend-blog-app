@@ -1,24 +1,15 @@
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
+import { UserContext } from "../App"
 
 export default function Nav() {
-    const [loggedIn, setLoggedIn] = useState(false)
+
+    const { login, setLogin } = useContext(UserContext)
+    
     const nav = useNavigate()
 
-    useEffect(() => {
-        const userLocalStorage = localStorage.getItem('myUser')
-
-        if (userLocalStorage) {
-            setLoggedIn(true)
-        }
-    }, [])
-
-    const goToLogin = () => {
-        nav('/home')
-    }
-
     const handleLogOut = () => {
-        localStorage.clear()
+        setLogin(false)
         nav('/')
     }
 
@@ -30,24 +21,32 @@ export default function Nav() {
                         Home
                     </a>
                 </li>
-                {!loggedIn &&
-                    <li>
-                        <a href="/"><button onClick={goToLogin}>
-                            Log In
-                        </button></a>
-                    </li>
+                {!login &&
+                    <>
+                        <li>
+                            <a href="/signup">
+                                    Sign Up
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/">
+                                    Log in
+                            </a>
+                        </li>
+                    </>
                 }
-                {loggedIn &&
+                {login &&
                     <>
                         <li>
                             <a href="/post">
-                                Add Post
+                                    Add Post
                             </a>
                         </li>
                         <li>
                             <button onClick={handleLogOut}>LogOut</button>
                         </li>
-                    </>}
+                    </>
+                }
             </ul>
         </header>
     )
