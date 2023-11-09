@@ -20,7 +20,7 @@ export default function Login() {
             password: e.target.password.value
         }
 
-        fetch('http://localhost:8080/', {
+        fetch('https://blog-app-api-eolcmezqwa-uc.a.run.app', {
             method : 'POST',
             headers: {
                 "Content-Type": "application/json"

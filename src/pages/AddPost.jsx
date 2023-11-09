@@ -14,7 +14,7 @@ export default function AddPost() {
         formData.content = e.target.content.value
 
 
-        fetch('http://localhost:8080/post', {
+        fetch('https://blog-app-api-eolcmezqwa-uc.a.run.app/post', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

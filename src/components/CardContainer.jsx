@@ -8,7 +8,7 @@ export default function CardContainer() {
     // 1. As soon as component loads, fetch data
 
     useEffect(() => {
-        fetch('http://localhost:8080/home')
+        fetch('https://blog-app-api-eolcmezqwa-uc.a.run.app/home')
             .then(res => res.json())
             // 2. Put data array in state variable
             .then((data) => setBlogPosts(data))

@@ -20,7 +20,7 @@ const {setLogin, login} = useContext(UserContext)
             password: e.target.password.value
         }
 
-        fetch('http://localhost:8080/signup', {
+        fetch('https://blog-app-api-eolcmezqwa-uc.a.run.app/signup', {
             method: 'POST',
             headers: {
                 "Content-Type": "application/json"
