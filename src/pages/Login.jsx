@@ -44,7 +44,7 @@ export default function Login() {
     }
 
     return (
-        <div>
+        <div className="loginContainer">
 
             <h2>Please Log In:</h2>
 
@@ -56,7 +56,7 @@ export default function Login() {
                 </label>
 
                 <br />
-
+                <br />
                 <label htmlFor="password">
                     Password:
                     <input type="password" name="password" />
