@@ -108,6 +108,11 @@ footer {
   margin: auto;
 }
 
+.loginButton {
+  width: 50%;
+  margin: auto;
+  margin-top: 1rem;
+}
 /* .loginContainer{
   display: flex;
   flex-direction: column;
