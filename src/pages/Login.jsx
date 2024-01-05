@@ -6,10 +6,10 @@ export default function Login() {
     const navigate = useNavigate()
     const { login, setLogin, data, setData } = useContext(UserContext)
 
-    useEffect(()=> {
-       if (login === true){
-        navigate('/home')
-       }
+    useEffect(() => {
+        if (login === true) {
+            navigate('/home')
+        }
     }, [login])
 
     const handleFormSubmit = (e) => {
@@ -21,7 +21,7 @@ export default function Login() {
         }
 
         fetch('https://blog-app-api-eolcmezqwa-uc.a.run.app', {
-            method : 'POST',
+            method: 'POST',
             headers: {
                 "Content-Type": "application/json"
             },
@@ -30,7 +30,7 @@ export default function Login() {
             .then(res => res.json())
             .then(user => {
                 console.log('user -->', user.message)
-                if(user.message === 'Unsuccessful'){
+                if (user.message === 'Unsuccessful') {
                     setLogin(false)
                 } else {
                     setLogin(true)
@@ -39,32 +39,39 @@ export default function Login() {
                 }
             })
             .catch(console.error)
-        
+
         // navigate('/home')
     }
 
     return (
-        <div className="loginContainer">
-
+        <>
             <h2>Please Log In:</h2>
+            <div className="loginContainer">
 
-            <form action="submit" onSubmit={handleFormSubmit} >
 
-                <label htmlFor="email">
-                    Email:
-                    <input type="email" name="email" id="" />
-                </label>
+                <form action="submit" onSubmit={handleFormSubmit} className="loginForm">
 
-                <br />
-                <br />
-                <label htmlFor="password">
-                    Password:
-                    <input type="password" name="password" />
-                </label>
+                    <div className="inputGroup">
+                        <label htmlFor="email" className="emailLabel">
+                            Email:
+                            <input type="email" name="email" id="" />
+                        </label>
+                    </div>
 
-                <button type="submit">Log in</button>
+                    <br />
+                    <br />
 
-            </form>
-        </div>
+                    <div className="inputGroup">
+                        <label htmlFor="password">
+                            Password:
+                            <input type="password" name="password" />
+                        </label>
+                    </div>
+                    
+                    <button type="submit">Log in</button>
+
+                </form>
+            </div>
+        </>
     )
 }
